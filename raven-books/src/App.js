@@ -18,11 +18,14 @@ function App() {
     getReviews();
   }, [reviews]);
 
+  {
+    console.log(reviews);
+  }
   return (
     <div className="App">
       <Add reviews={reviews} setReviews={setReviews} />
       <div className="reviews">
-        {reviews.map((item) => {
+        {[reviews].map((item) => {
           return (
             <div className="review">
               <h3> Title: {item.book_title}</h3>

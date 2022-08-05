@@ -28,7 +28,12 @@ function App() {
               <h3> Title: {item.book_title}</h3>
               <h3> Review: {item.book_review}</h3>
               <h3> Rating: {item.book_rating}</h3>
-              <Edit id={item.id} reviews={reviews} setReviews={setReviews} />
+              <Edit
+                id={item.id}
+                reviews={reviews}
+                setReviews={setReviews}
+                getReviews={getReviews}
+              />
               <Delete id={item.id} reviews={reviews} setReviews={setReviews} />
             </div>
           );

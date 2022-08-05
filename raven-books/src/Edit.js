@@ -14,20 +14,23 @@ export default function Edit(props) {
 
   const updateReview = (data) => {
     console.log(data);
-    axios.put("http://localhost:3000/reviews", data).then((res) => {
-      props.setReviews(
-        props.reviews.map((item) => {
-          return item.id === props.id
-            ? {
-                id: item.id,
-                book_title: item.book_title,
-                book_review: item.book_review,
-                book_rating: item.book_rating,
-              }
-            : item;
-        })
-      );
-    });
+    axios
+      .put("http://localhost:3000/reviews", data)
+      .then((res) => {
+        props.setReviews(
+          props.reviews.map((item) => {
+            return item.id === props.id
+              ? {
+                  id: item.id,
+                  book_title: item.book_title,
+                  book_review: item.book_review,
+                  book_rating: item.book_rating,
+                }
+              : item;
+          })
+        );
+      })
+      .then(() => props.getReviews());
   };
 
   return (

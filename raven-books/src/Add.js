@@ -6,21 +6,19 @@ import axios from "axios";
 export default function Add(props) {
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
     addReview(data);
+    // props.getReviews();
   };
 
   const addReview = (data) => {
     console.log(data);
     console.log(props);
-    axios.post("https://raven-books.herokuapp.com/reviews", data).then(() => {
-      props.setReviews([
-        ...props.reviews,
-        {
-          data,
-        },
-      ]);
-    });
+    axios
+      .post("http://localhost:3000/reviews", data)
+      .then(() => {
+        props.setReviews([...props.reviews, data]);
+      })
+      .then(() => props.getReviews());
   };
 
   return (

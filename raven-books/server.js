@@ -2,17 +2,17 @@ const express = require("express");
 const mysql = require("mysql2");
 require("dotenv").config();
 const cors = require("cors");
-const path = require("path");
+// const path = require("path");
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname, "build")));
+// app.use(express.static(path.join(__dirname, "build")));
 
-app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
-});
+// app.get("/*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "build", "index.html"));
+// });
 
 const db = mysql.createPool({
   host: process.env.DB_HOST,

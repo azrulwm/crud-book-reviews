@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { useState, useEffect } from "react";
 import Add from "./Add";
@@ -8,24 +7,22 @@ import axios from "axios";
 
 function App() {
   const [reviews, setReviews] = useState([]);
-  const getReviews = () => {
-    axios.get("https://raven-books.herokuapp.com/reviews").then((res) => {
+  const getReviews = () =>
+    axios.get("http://localhost:3000/reviews").then((res) => {
       setReviews(res.data);
+      console.log(res.data);
     });
-  };
 
   useEffect(() => {
     getReviews();
-  }, [reviews]);
+  }, []);
 
-  {
-    console.log(reviews);
-  }
   return (
     <div className="App">
-      <Add reviews={reviews} setReviews={setReviews} />
+      <Add reviews={reviews} setReviews={setReviews} getReviews={getReviews} />
       <div className="reviews">
-        {[reviews].map((item) => {
+        {console.log(reviews)};
+        {[...reviews].map((item) => {
           return (
             <div className="review">
               <h3> Title: {item.book_title}</h3>

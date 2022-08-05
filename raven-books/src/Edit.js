@@ -14,7 +14,7 @@ export default function Edit(props) {
 
   const updateReview = (data) => {
     console.log(data);
-    axios.put("https://raven-books.herokuapp.com/reviews", data).then((res) => {
+    axios.put("http://localhost:3000/reviews", data).then((res) => {
       props.setReviews(
         props.reviews.map((item) => {
           return item.id === props.id

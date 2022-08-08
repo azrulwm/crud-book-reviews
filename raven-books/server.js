@@ -2,17 +2,13 @@ const express = require("express");
 const mysql = require("mysql2");
 require("dotenv").config();
 const cors = require("cors");
-// const path = require("path");
+const path = require("path");
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-// app.use(express.static(path.join(__dirname, "build")));
-
-// app.get("/*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "build", "index.html"));
-// });
+app.use(express.static(path.join(__dirname, "build")));
 
 const db = mysql.createPool({
   host: process.env.DB_HOST,
@@ -74,6 +70,10 @@ app.delete("/reviews/:id", (req, res) => {
       }
     }
   );
+});
+
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
 const listener = app.listen(process.env.PORT || 3000, () => {

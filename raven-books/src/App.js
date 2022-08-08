@@ -8,7 +8,7 @@ import axios from "axios";
 function App() {
   const [reviews, setReviews] = useState([]);
   const getReviews = () =>
-    axios.get("http://localhost:3000/reviews").then((res) => {
+    axios.get("https://raven-books.herokuapp.com/reviews").then((res) => {
       setReviews(res.data);
       console.log(res.data);
     });

@@ -28,7 +28,7 @@ export default function Add(props) {
         type="text"
         placeholder="Book Title"
         name="book_title"
-        {...register("book_title", { required: true, maxLength: 40 })}
+        {...register("book_title", { required: true, maxLength: 450 })}
       />
       <input
         type="text"
